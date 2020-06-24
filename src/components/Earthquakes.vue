@@ -5,11 +5,10 @@
         <v-col cols="12">
           <div class="text-h4">{{title}}</div>
         </v-col>
-      </v-row>
-      <v-row xs12>
-        <v-flex xs10 sm8 md5 lg3>
+        <v-flex xs12 sm6 md5 lg3>
           <v-text-field v-model="filter" label="Filter" @input="filterResults" clearable></v-text-field>
         </v-flex>
+
         <v-list subheader three-line xs9 sm6 md4 lg3>
           <div v-for="feature in features" :key="feature.id">
             <v-list-item v-if="feature.visible">
@@ -27,13 +26,13 @@
           </div>
         </v-list>
       </v-row>
+      {{info}}
     </v-layout>
   </v-container>
 </template>
 
 <script>
 import axios from "axios";
-
 export default {
   mounted() {
     axios
@@ -56,14 +55,6 @@ export default {
       })
       .catch(error => console.log(error));
   },
-  data() {
-    return {
-      title: "Earthquakes!",
-      features: [],
-      filter: null,
-      info: null
-    };
-  },
   methods: {
     filterResults() {
       this.features.forEach(feature => {
@@ -77,9 +68,14 @@ export default {
         }
       });
     }
+  },
+  data() {
+    return {
+      title: "Earthquakes!",
+      features: [],
+      info: null,
+      filter: null
+    };
   }
 };
 </script>
-
-<style>
-</style>

@@ -15,13 +15,17 @@
 </template>
 
 <script>
-import Earthquakes from './components/Earthquakes.vue';
+import Earthquakes from './components/Earthquakes';
 
 export default {
   name: 'App',
 
   components: {
     Earthquakes,
-  }
+  },
+
+  data: () => ({
+    //
+  }),
 };
 </script>
